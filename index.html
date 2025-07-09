@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orlando Cigar Lounge Social</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .filters {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .filters label {
+      margin: 0 1rem;
+    }
+    select, input[type="number"] {
+      padding: 0.4rem;
+      margin-left: 0.5rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      margin-left: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 1rem;
+      border: 1px solid #ddd;
+      vertical-align: top;
+      cursor: pointer;
+    }
+    th {
+      background-color: #333;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #fafafa;
+    }
+    .business-details {
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>Orlando Cigar Lounge Social</h1>
+
+  <div class="filters">
+    <label for="cityFilter">City:
+      <select id="cityFilter">
+        <option value="">All</option>
+      </select>
+    </label>
+    <label for="barFilter">Bar Offerings:
+      <select id="barFilter">
+        <option value="">All</option>
+      </select>
+    </label>
+    <label for="distanceFilter">Max Distance (mi):
+      <input type="number" id="distanceFilter" min="0" step="1">
+    </label>
+    <button onclick="resetFilters()">Reset Filters</button>
+  </div>
+
+  <table id="loungeTable">
+    <thead>
+      <tr>
+        <th onclick="sortTable(0)">Business</th>
+        <th onclick="sortTable(1)">City</th>
+        <th onclick="sortTable(2)">Distance from Downtown (mi)</th>
+        <th onclick="sortTable(3)">Bar Offerings</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="business-details"><strong>Corona Cigar – Downtown</strong><br>127 S Orange Ave, Orlando, FL 32801<br>Phone: (407) 404‑5344<br>Hours: Mon–Tue: 9 AM–12 AM, Wed–Thu: 9 AM–1 AM, Fri–Sat: 9 AM–2 AM, Sun: 10 AM–12 AM<br>Website: coronacigar.com</td><td>Orlando</td><td>0</td><td>Full Bar</td></tr>
+      <tr><td class="business-details"><strong>The Cigar Box Orlando</strong><br>5636 Hansel Ave, Orlando, FL 32809<br>Phone: (407) 286‑5660<br>Hours: Mon–Wed: 10:30 AM–12 AM, Thu–Sat: 10:30 AM–1 AM, Sun: 12 PM–11 PM<br>Website: thecigarboxorlando.com</td><td>Edgewood</td><td>5</td><td>Unknown</td></tr>
+      <tr><td class="business-details"><strong>Admiral Cigar Club</strong><br>4940 New Broad St, Orlando, FL 32814<br>Phone: (407) 637‑5236<br>Hours: Mon–Thu: 4 PM–12 AM, Fri–Sat: 4 PM–1 AM, Sun: 1 PM–11 PM<br>Website: admiralcigar.com</td><td>Orlando</td><td>6</td><td>Beer & Wine</td></tr>
+      <tr><td class="business-details"><strong>Cigarz at Waterford</strong><br>610 N Alafaya Trail #101, Orlando, FL 32828<br>Phone: (407) 704‑6926<br>Hours: Mon–Thu: 11 AM–9 PM, Fri–Sat: 11 AM–10 PM, Sun: 12 PM–6 PM<br>Website: cigarzatwaterford.com</td><td>Orlando</td><td>13</td><td>Unknown</td></tr>
+      <tr><td class="business-details"><strong>Drawing Room Cigar Club</strong><br>7988 Via Dellagio Way Ste 112 & 116, Orlando, FL 32819<br>Phone: (407) 743‑2526<br>Hours: Tue–Thu: 11 AM–12 AM, Fri–Sat: 11 AM–2 AM, Sun: 11 AM–10 PM, Mon: Closed<br>Website: londonhouse.life</td><td>Orlando</td><td>11</td><td>Full Bar</td></tr>
+      <tr><td class="business-details"><strong>Corona Cigar – Lake Mary</strong><br>1130 TownPark Ave, Lake Mary, FL 32746<br>Phone: (407) 333‑3453<br>Hours: Mon–Tue: 9 AM–12 AM, Wed–Thu: 9 AM–1 AM, Fri–Sat: 9 AM–2 AM, Sun: 10 AM–12 AM<br>Website: coronacigar.com</td><td>Lake Mary</td><td>20</td><td>Full Bar</td></tr>
+      <tr><td class="business-details"><strong>Fuego by Sosa Cigar Lounge</strong><br>5770 W Irlo Bronson Memorial Hwy, Kissimmee, FL 34746<br>Phone: (407) 507‑1415<br>Hours: Daily: 11 AM–11 PM<br>Website: myoldtownusa.com</td><td>Kissimmee</td><td>22</td><td>Beer & Wine</td></tr>
+      <tr><td class="business-details"><strong>Old Fashion Cigar Lounge</strong><br>1308 10th St, St. Cloud, FL 34769<br>Phone: (321) 805‑4007<br>Hours: TBD<br>Website: oldfashioncigar.com</td><td>St. Cloud</td><td>29</td><td>Unknown</td></tr>
+      <tr><td class="business-details"><strong>Executive Cigar Shop & Lounge</strong><br>225 W Seminole Blvd #1108, Sanford, FL 32771<br>Phone: (321) 926‑3611<br>Hours: Sun–Thu: 11 AM–11 PM, Fri–Sat: 11 AM–12 AM<br>Website: executivesanford.com</td><td>Sanford</td><td>24</td><td>Full Bar</td></tr>
+      <tr><td class="business-details"><strong>Cigar Life</strong><br>5724 S Florida Ave, Lakeland, FL 33813<br>Phone: (863) 603‑8495<br>Hours: Mon–Thu: 11 AM–9 PM, Fri–Sat: 10 AM–10 PM, Sun: 12 PM–6 PM<br>Website: cigarlifellc.com</td><td>Lakeland</td><td>49</td><td>Beer & Wine</td></tr>
+      <tr><td class="business-details"><strong>Lafamosa Cigar Lounge</strong><br>2118 S Florida Ave, Lakeland, FL 33803<br>Phone: TBD<br>Hours: Mon–Sat: 10 AM–7 PM, Sun: Closed<br>Website: cigarworld.com</td><td>Lakeland</td><td>48</td><td>Unknown</td></tr>
+      <tr><td class="business-details"><strong>1911 Rollin’ Cigar Lounge</strong><br>Lakeland, FL 33805<br>Phone: (863) 608‑9996<br>Hours: TBD<br>Website: N/A</td><td>Lakeland</td><td>47</td><td>Unknown</td></tr>
+      <tr><td class="business-details"><strong>Low Ball Louie’s Cigars</strong><br>2438 Sand Mine Road, Davenport, FL 33897<br>Phone: (863) 420‑0048<br>Hours: Mon–Sat: 9:30 AM–7 PM, Sun: 10 AM–4 PM<br>Website: lowballlouies.com</td><td>Davenport</td><td>38</td><td>None</td></tr>
+      <tr><td class="business-details"><strong>Rebellion Cigars</strong><br>Davenport, FL 33837<br>Phone: (863) 317‑3979<br>Hours: TBD<br>Website: rebellioncigars.com</td><td>Davenport</td><td>36</td><td>Unknown</td></tr>
+      <tr><td class="business-details"><strong>Hidden Cave Lounge & Bar</strong><br>44199 US‑27, Davenport, FL 33897<br>Phone: TBD<br>Hours: Daily from 4 PM<br>Website: Facebook</td><td>Davenport</td><td>38</td><td>Hookah / Full Bar</td></tr>
+    </tbody>
+  </table>
+
+  <script>
+    const cityFilter = document.getElementById('cityFilter');
+    const barFilter = document.getElementById('barFilter');
+    const distanceFilter = document.getElementById('distanceFilter');
+    const table = document.getElementById('loungeTable');
+    const rows = Array.from(table.querySelectorAll('tbody tr'));
+
+    function populateFilters() {
+      const cities = new Set();
+      const bars = new Set();
+      rows.forEach(row => {
+        cities.add(row.cells[1].textContent.trim());
+        bars.add(row.cells[3].textContent.trim());
+      });
+      cities.forEach(city => {
+        const option = document.createElement('option');
+        option.value = option.textContent = city;
+        cityFilter.appendChild(option);
+      });
+      bars.forEach(bar => {
+        const option = document.createElement('option');
+        option.value = option.textContent = bar;
+        barFilter.appendChild(option);
+      });
+    }
+
+    function filterRows() {
+      const city = cityFilter.value;
+      const bar = barFilter.value;
+      const maxDist = parseFloat(distanceFilter.value);
+      rows.forEach(row => {
+        const matchesCity = !city || row.cells[1].textContent.trim() === city;
+        const matchesBar = !bar || row.cells[3].textContent.trim() === bar;
+        const dist = parseFloat(row.cells[2].textContent);
+        const matchesDist = isNaN(maxDist) || dist <= maxDist;
+        row.style.display = matchesCity && matchesBar && matchesDist ? '' : 'none';
+      });
+    }
+
+    function resetFilters() {
+      cityFilter.value = "";
+      barFilter.value = "";
+      distanceFilter.value = "";
+      filterRows();
+    }
+
+    function sortTable(colIndex) {
+      const tbody = table.querySelector('tbody');
+      const sortedRows = Array.from(tbody.rows).sort((a, b) => {
+        const valA = a.cells[colIndex].textContent.trim();
+        const valB = b.cells[colIndex].textContent.trim();
+        const isNumeric = !isNaN(parseFloat(valA)) && !isNaN(parseFloat(valB));
+        return isNumeric ? valA - valB : valA.localeCompare(valB);
+      });
+      tbody.append(...sortedRows);
+    }
+
+    cityFilter.addEventListener('change', filterRows);
+    barFilter.addEventListener('change', filterRows);
+    distanceFilter.addEventListener('input', filterRows);
+
+    populateFilters();
+    filterRows();
+  </script>
+</body>
+</html>
